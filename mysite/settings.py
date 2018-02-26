@@ -32,13 +32,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'blog.apps.BlogConfig',
+    'django.contrib.admin',             # admin管理后台站点
+    'django.contrib.auth',              # 身份认证系统
+    'django.contrib.contenttypes',      # 内容类型框架
+    'django.contrib.sessions',          # 会话框架
+    'django.contrib.messages',          # 消息框架
+    'django.contrib.staticfiles',       # 静态文件管理框架
+    'blog.apps.BlogConfig',             # 创建的app应用blog
+    'polls.apps.PollsConfig',           # 创建的app应用polls，可以直接简写为polls
 ]
 
 MIDDLEWARE = [
@@ -77,12 +78,23 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+import pymysql      # 一定要添加这两行！通过pip install pymysql！
+pymysql.install_as_MySQLdb()
+
 DATABASES = {
     'default': {
         # django.db.backends.sqlite3、django.db.backends.postgresql、django.db.backends.mysql、django.db.backends.oracle
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'mysite',
+    #     'HOST': 'localhost',
+    #     'USER': 'root',
+    #     'PASSWORD': '123456',
+    #     'PORT': '3306',
+    # }
 }
 
 # Password validation
@@ -108,7 +120,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 

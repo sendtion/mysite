@@ -22,7 +22,7 @@ from django.contrib import admin
 from blog import views      # 需要先导入对应app的views文件
 
 urlpatterns = [
-    # url(r'^admin/', admin.site.urls),         # admin后台的路由，先注释掉
+    url(r'^admin/', admin.site.urls),             # admin后台的路由，先注释掉
     url(r'^', views.index),                       # 可以设置主页
     url(r'^index/', views.index),                 # 你的路由，重点是引号中的正则表达式和后面的业务逻辑函数
 ]
